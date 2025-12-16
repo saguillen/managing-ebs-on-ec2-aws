@@ -574,6 +574,14 @@ df -h | grep data
 - Revisa la sintaxis de la línea añadida
 - Verifica el UUID con `sudo blkid`
 
+
+**Output obtenido por consola**
+```
+/dev/nvme1n1       10G  104M  9.9G   2% /data
+```
+
+
+
 #### Paso 7.5: Verificar que sobrevive a un reinicio (Opcional)
 
 **⚠️ Esto reiniciará tu instancia:**
@@ -583,7 +591,8 @@ df -h | grep data
 sudo reboot
 ```
 
-Espera 2-3 minutos y conéctate de nuevo:
+![alt text](image.png)
+
 
 ```bash
 ssh -i practica-ssh-key.pem ec2-user@<IP-PUBLICA>
@@ -595,4 +604,23 @@ df -h | grep data
 cat /data/test.txt
 ```
 
+**Output obtenido por consola**
+```
+S$ ssh -i practica-ssh-key.pem ec2-user@18.222.120.90
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Tue Dec 16 01:34:55 2025 from 181.237.79.187
+[ec2-user@ip-10-0-1-83 ~]$ df -h | grep data
+/dev/nvme1n1       10G  104M  9.9G   2% /data
+[ec2-user@ip-10-0-1-83 ~]$ cat /data/test.txt
+Este es un archivo en el nuevo volumen EBS
+```
 ---
